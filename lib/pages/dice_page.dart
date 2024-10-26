@@ -8,14 +8,30 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   String rutaImagen = "assets/images/dice1.png";
   int dadoN = 1;
-  int n = 2;
+  int n = 1;
+
   void cambiarADado6() {
-    // rutaImagen = "assets/images/dice6.png";
-    dadoN = 6;
+    // print("Cambiando a dado 6");
+    setState(() {
+      rutaImagen = "assets/images/dice6.png";
+    });
   }
 
-  void cambiarDadoParam(int n) {
-    dadoN = n;
+  void cambiarADado() {
+    // print("Cambiando a dado 6");
+    dadoN = 6;
+    setState(() {
+      rutaImagen = "assets/images/dice6.png";
+    });
+  }
+
+  void cambiarADadoN(int x) {
+    // print("Cambiando a dado 6");
+    dadoN = x;
+    setState(() {
+      rutaImagen = "assets/images/dice$dadoN.png";
+    });
+    n = n + 1;
   }
 
   @override
@@ -31,42 +47,44 @@ class _DicePageState extends State<DicePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 200,
               width: 200,
+              height: 200,
               decoration: BoxDecoration(
                 color: Colors.red,
-                //TRES FORMAS PARA COLOCAR BORDES CIRCULARES A MI CONTAINER
-                // PRIMERA
+                // // // Bordes circulares
+                // primera forma :
                 // borderRadius: BorderRadius.circular(16),
 
-                //SEGUNDA
+                // // // Segunda forma
                 borderRadius: BorderRadius.all(
                   Radius.circular(16),
                 ),
 
-                //TERCERA --- coloco el borde totalmente circular
+                //Tercera forma
                 // shape: BoxShape.circle,
               ),
-              // color: Colors.red,
+              // color:Colors.red,
               padding: EdgeInsets.all(16),
               child: Image.asset(
+                // rutaImagen,
                 "assets/images/dice$dadoN.png",
                 // width: 200,
                 // height: 200,
               ),
             ),
-            SizedBox(
-              height: 16,
-            ),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
+                print("BotÃ³n presionado");
                 // cambiarADado6();
-                cambiarDadoParam(n);
-
-                setState(() {});
+                //cambiarADado();
+                cambiarADadoN(n);
+                print("n: $n");
+                print("dadoN: $dadoN");
               },
-              child: Text("Cambiar a $n"),
-            )
+              // child: Text("presioname"),
+              child: Text("presioname :: $n"),
+            ),
           ],
         ),
       ),
