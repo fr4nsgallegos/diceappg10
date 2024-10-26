@@ -7,9 +7,11 @@ class DicePage extends StatefulWidget {
 
 class _DicePageState extends State<DicePage> {
   String rutaImagen = "assets/images/dice1.png";
+  int dadoN = 1;
 
   void cambiarADado6() {
-    rutaImagen = "assets/images/dice6.png";
+    // rutaImagen = "assets/images/dice6.png";
+    dadoN = 6;
   }
 
   @override
@@ -44,7 +46,7 @@ class _DicePageState extends State<DicePage> {
               // color: Colors.red,
               padding: EdgeInsets.all(16),
               child: Image.asset(
-                rutaImagen,
+                "assets/images/dice$dadoN.png",
                 // width: 200,
                 // height: 200,
               ),
