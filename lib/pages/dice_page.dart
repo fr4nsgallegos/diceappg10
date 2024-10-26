@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class DicePage extends StatefulWidget {
@@ -8,31 +10,36 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   String rutaImagen = "assets/images/dice1.png";
   int dadoN = 1;
-  int n = 1;
 
-  void cambiarADado6() {
-    // print("Cambiando a dado 6");
-    setState(() {
-      rutaImagen = "assets/images/dice6.png";
-    });
+  void shuffleDado() {
+    dadoN = Random().nextInt(6) + 1;
+    print(dadoN);
   }
+  // int n = 1;
 
-  void cambiarADado() {
-    // print("Cambiando a dado 6");
-    dadoN = 6;
-    setState(() {
-      rutaImagen = "assets/images/dice6.png";
-    });
-  }
+  // void cambiarADado6() {
+  //   // print("Cambiando a dado 6");
+  //   setState(() {
+  //     rutaImagen = "assets/images/dice6.png";
+  //   });
+  // }
 
-  void cambiarADadoN(int x) {
-    // print("Cambiando a dado 6");
-    dadoN = x;
-    setState(() {
-      rutaImagen = "assets/images/dice$dadoN.png";
-    });
-    n = n + 1;
-  }
+  // void cambiarADado() {
+  //   // print("Cambiando a dado 6");
+  //   dadoN = 6;
+  //   setState(() {
+  //     rutaImagen = "assets/images/dice6.png";
+  //   });
+  // }
+
+  // void cambiarADadoN(int x) {
+  //   // print("Cambiando a dado 6");
+  //   dadoN = x;
+  //   setState(() {
+  //     rutaImagen = "assets/images/dice$dadoN.png";
+  //   });
+  //   n = n + 1;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -75,15 +82,12 @@ class _DicePageState extends State<DicePage> {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                print("BotÃ³n presionado");
-                // cambiarADado6();
-                //cambiarADado();
-                cambiarADadoN(n);
-                print("n: $n");
-                print("dadoN: $dadoN");
+                // cambiarADadoN(n);
+                shuffleDado();
+                setState(() {});
               },
               // child: Text("presioname"),
-              child: Text("presioname :: $n"),
+              child: Text("Shuffle"),
             ),
           ],
         ),
