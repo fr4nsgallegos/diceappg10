@@ -53,30 +53,36 @@ class _DicePageState extends State<DicePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 200,
-              height: 200,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                // // // Bordes circulares
-                // primera forma :
-                // borderRadius: BorderRadius.circular(16),
+            GestureDetector(
+              onTap: () {
+                shuffleDado();
+                setState(() {});
+              },
+              child: Container(
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  // // // Bordes circulares
+                  // primera forma :
+                  // borderRadius: BorderRadius.circular(16),
 
-                // // // Segunda forma
-                borderRadius: BorderRadius.all(
-                  Radius.circular(16),
+                  // // // Segunda forma
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+
+                  //Tercera forma
+                  // shape: BoxShape.circle,
                 ),
-
-                //Tercera forma
-                // shape: BoxShape.circle,
-              ),
-              // color:Colors.red,
-              padding: EdgeInsets.all(16),
-              child: Image.asset(
-                // rutaImagen,
-                "assets/images/dice$dadoN.png",
-                // width: 200,
-                // height: 200,
+                // color:Colors.red,
+                padding: EdgeInsets.all(16),
+                child: Image.asset(
+                  // rutaImagen,
+                  "assets/images/dice$dadoN.png",
+                  // width: 200,
+                  // height: 200,
+                ),
               ),
             ),
             SizedBox(height: 16),
