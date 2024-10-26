@@ -8,10 +8,14 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   String rutaImagen = "assets/images/dice1.png";
   int dadoN = 1;
-
+  int n = 2;
   void cambiarADado6() {
     // rutaImagen = "assets/images/dice6.png";
     dadoN = 6;
+  }
+
+  void cambiarDadoParam(int n) {
+    dadoN = n;
   }
 
   @override
@@ -56,11 +60,12 @@ class _DicePageState extends State<DicePage> {
             ),
             ElevatedButton(
               onPressed: () {
-                cambiarADado6();
+                // cambiarADado6();
+                cambiarDadoParam(n);
 
                 setState(() {});
               },
-              child: Text("Cambiar a 6"),
+              child: Text("Cambiar a $n"),
             )
           ],
         ),
