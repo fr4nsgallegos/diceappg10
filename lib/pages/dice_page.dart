@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  String rutaImagen = "assets/images/dice1.png";
+
+  void cambiarADado6() {
+    rutaImagen = "assets/images/dice6.png";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,16 +25,18 @@ class DicePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
+              height: 200,
+              width: 200,
               decoration: BoxDecoration(
                 color: Colors.red,
                 //TRES FORMAS PARA COLOCAR BORDES CIRCULARES A MI CONTAINER
                 // PRIMERA
-                borderRadius: BorderRadius.circular(16),
+                // borderRadius: BorderRadius.circular(16),
 
                 //SEGUNDA
-                // borderRadius: BorderRadius.all(
-                //   Radius.circular(16),
-                // ),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(16),
+                ),
 
                 //TERCERA --- coloco el borde totalmente circular
                 // shape: BoxShape.circle,
@@ -31,11 +44,22 @@ class DicePage extends StatelessWidget {
               // color: Colors.red,
               padding: EdgeInsets.all(16),
               child: Image.asset(
-                "assets/images/dice1.png",
-                width: 200,
-                height: 200,
+                rutaImagen,
+                // width: 200,
+                // height: 200,
               ),
             ),
+            SizedBox(
+              height: 16,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                cambiarADado6();
+
+                setState(() {});
+              },
+              child: Text("Cambiar a 6"),
+            )
           ],
         ),
       ),
