@@ -15,39 +15,44 @@ class _DicePageState extends State<DicePage> {
     dadoN = Random().nextInt(6) + 1;
     print(dadoN);
   }
-  // int n = 1;
-
-  // void cambiarADado6() {
-  //   // print("Cambiando a dado 6");
-  //   setState(() {
-  //     rutaImagen = "assets/images/dice6.png";
-  //   });
-  // }
-
-  // void cambiarADado() {
-  //   // print("Cambiando a dado 6");
-  //   dadoN = 6;
-  //   setState(() {
-  //     rutaImagen = "assets/images/dice6.png";
-  //   });
-  // }
-
-  // void cambiarADadoN(int x) {
-  //   // print("Cambiando a dado 6");
-  //   dadoN = x;
-  //   setState(() {
-  //     rutaImagen = "assets/images/dice$dadoN.png";
-  //   });
-  //   n = n + 1;
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.black38,
       appBar: AppBar(
-        title: Text("Dice Page"),
-        centerTitle: true,
+        title: Text("Dice Page"), //Título del Appbar
+        centerTitle: true, //Centrar el título
+        leading:
+            Icon(Icons.menu), //Coloca un widget a lado izquierda del Appbar
+        actions: [
+          //Recibe una lista de widgets que se van a mostrar en el lado derecho del Appbar
+          Tooltip(
+            message: "Buscar",
+            child: IconButton(
+              onPressed: () {
+                print("Buscar presionado");
+              },
+              icon: Icon(Icons.search),
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.more_vert,
+            ),
+          )
+        ],
+        backgroundColor: Colors.blue, //Color de fondo del Appbar
+        elevation: 7.0, //Controla la sombra que hay debajo del Appbar
+        shadowColor: Colors.red, //Cambiar el color de la sombra generada
+        titleSpacing:
+            10, //Definir el espacio al rededor del título, útil para alinear de acuerdo a ciertas necesidades
+        iconTheme: IconThemeData(
+            color: Colors.white,
+            size: 30), //Define la apariencia de los íconos en el Appbar
+        actionsIconTheme: IconThemeData(
+            color: Colors
+                .yellow), //Especifica apariencia de los íconos de la propiedad "actions"
       ),
       body: Center(
         child: Column(
@@ -78,21 +83,16 @@ class _DicePageState extends State<DicePage> {
                 // color:Colors.red,
                 padding: EdgeInsets.all(16),
                 child: Image.asset(
-                  // rutaImagen,
                   "assets/images/dice$dadoN.png",
-                  // width: 200,
-                  // height: 200,
                 ),
               ),
             ),
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // cambiarADadoN(n);
                 shuffleDado();
                 setState(() {});
               },
-              // child: Text("presioname"),
               child: Text("Shuffle"),
             ),
           ],
